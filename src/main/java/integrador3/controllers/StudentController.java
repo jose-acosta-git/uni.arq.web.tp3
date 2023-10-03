@@ -19,8 +19,6 @@ import integrador3.services.StudentService;
 public class StudentController {
 
 	@Autowired
-	private StudentRepository studentRepository;
-	@Autowired
 	private StudentService studentService;
 	
 	@GetMapping
@@ -29,7 +27,7 @@ public class StudentController {
 	}
 	
 	@PostMapping
-	public Student create(@RequestBody Student student) {
-		return studentRepository.save(student);
+	public Student create(@RequestBody StudentDto studentDto) {
+		return studentService.save(studentDto);
 	}
 }

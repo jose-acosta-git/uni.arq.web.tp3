@@ -23,7 +23,15 @@ public class StudentService {
 		return dtoList;
 	}
 	
+	public Student save(StudentDto studentDto) {
+		return studentRepository.save(convertToEntity(studentDto));
+	}
+	
 	private StudentDto convertToDto(Student s) {
 		return new StudentDto(s.getDni(), s.getName(), s.getLast_name(), s.getAge(), s.getGender(), s.getCity(), s.getNotebook_number());
+	}
+	
+	private Student convertToEntity(StudentDto s) {
+		return new Student(s.getDni(), s.getName(), s.getLast_name(), s.getAge(), s.getGender(), s.getCity(), s.getNotebook_number());
 	}
 }
