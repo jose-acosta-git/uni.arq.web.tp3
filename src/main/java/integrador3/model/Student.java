@@ -1,10 +1,15 @@
 package integrador3.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Student {
@@ -33,6 +38,9 @@ public class Student {
 	
 	@Column(unique = true)
 	private int notebook_number;
+	
+	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+	private List<Enrollment> courses;
 
 	public Student(int dni, String name, String last_name, int age, String gender, String city,
 			int notebook_number) {
@@ -44,6 +52,7 @@ public class Student {
 		this.gender = gender;
 		this.city = city;
 		this.notebook_number = notebook_number;
+		this.courses = new ArrayList<>();
 	}
 	
     // Default constructor, needed by Hibernate
