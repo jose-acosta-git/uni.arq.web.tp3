@@ -9,5 +9,8 @@ public class CourseDto {
 		this.name = name;
 	}
 	
+	// Default constructor, needed by Hibernate
+	public CourseDto() {}
+	
 	public String getName() { return this.name; }
 }

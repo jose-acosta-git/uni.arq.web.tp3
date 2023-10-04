@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import integrador3.dtos.StudentDto;
 import integrador3.model.Student;
-import integrador3.repositories.StudentRepository;
 import integrador3.services.StudentService;
 
 @RestController
 @RequestMapping("/students")
-public class StudentController {
+public class StudentsController {
 
 	@Autowired
 	private StudentService studentService;
