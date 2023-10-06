@@ -11,12 +11,15 @@ import org.springframework.web.bind.annotation.RestController;
 
 import integrador3.dtos.CourseDto;
 import integrador3.model.Course;
+import integrador3.repositories.CourseRepository;
 import integrador3.services.CourseService;
 
 @RestController
 @RequestMapping("/courses")
 public class CoursesController {
 	
+	@Autowired
+	CourseRepository courseRepository;
 	@Autowired
 	CourseService courseService;
 	
@@ -26,7 +29,7 @@ public class CoursesController {
 	}
 	
 	@GetMapping
-	public List<CourseDto> getAll() {
-		return courseService.findAll();
+	public List<Course> findAll() {
+		return courseRepository.findAll();
 	}
 }

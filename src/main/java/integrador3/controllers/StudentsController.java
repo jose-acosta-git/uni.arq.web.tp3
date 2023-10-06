@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import integrador3.dtos.StudentDto;
 import integrador3.model.Student;
+import integrador3.repositories.StudentRepository;
 import integrador3.services.StudentService;
 
 @RestController
@@ -18,11 +19,13 @@ import integrador3.services.StudentService;
 public class StudentsController {
 
 	@Autowired
+	private StudentRepository studentRepository;
+	@Autowired
 	private StudentService studentService;
 	
 	@GetMapping
-	public List<StudentDto> getAll() {
-		return studentService.findAll();
+	public List<Student> findAll() {
+		return studentRepository.findAll();
 	}
 	
 	@PostMapping
