@@ -1,5 +1,7 @@
 package integrador3.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -29,5 +31,14 @@ public class StudentService {
 	
 	private Student convertToEntity(StudentDto s) {
 		return new Student(s.getDni(), s.getName(), s.getLastName(), s.getAge(), s.getGender(), s.getCity(), s.getNotebookNumber());
+	}
+
+	public ResponseEntity<List<Student>> findByGender(String gender) {
+		List<Student> students = studentRepository.findByGender(gender);
+	    if (!students.isEmpty()) {
+	        return ResponseEntity.ok(students);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 }

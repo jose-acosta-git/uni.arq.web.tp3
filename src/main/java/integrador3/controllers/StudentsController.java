@@ -44,4 +44,9 @@ public class StudentsController {
 	public ResponseEntity<Student> getStudentByNotebookNumber (@PathVariable int notebookNumber) {
 		return studentService.findByNotebookNumber(notebookNumber);
 	}
+	
+	@GetMapping("/byGender/{gender}")
+	public ResponseEntity<List<Student>> getStudentsByGender(@PathVariable String gender) {
+		return studentService.findByGender(gender);
+	}
 }
