@@ -32,4 +32,9 @@ public class StudentsController {
 	public Student create(@RequestBody StudentDto studentDto) {
 		return studentService.save(studentDto);
 	}
+	
+	@GetMapping("/findAllOrdered")
+	public List<Student> findAllOrdered() {
+		return studentRepository.findAllByOrderByLastNameAsc();
+	}
 }

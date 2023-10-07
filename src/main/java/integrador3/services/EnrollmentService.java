@@ -40,17 +40,19 @@ public class EnrollmentService {
 	}
 	
 	private EnrollmentDto convertToDto(Enrollment e) {
-		return new EnrollmentDto(e.getId(), e.getStudent().getName(), e.getCourse().getName(), e.getEntry_date(), e.getExit_date());
+		return new EnrollmentDto(e.getId(), e.getStudent().getName(), e.getCourse().getName(), e.getEntryDate(), e.getExitDate());
 	}
 	private Enrollment convertToEntity(CreateEnrollmentDto dto) {
 		Optional<Student> student = studentRepository.findById(dto.getStudentId());
 		if (!student.isPresent()) {
 			 throw new EntityNotFoundException("Student not found with ID: " + dto.getStudentId());
 		}
+		
 		Optional<Course> course = courseRepository.findById(dto.getCourseId());
 		if (!course.isPresent()) {
 			 throw new EntityNotFoundException("Course not found with ID: " + dto.getCourseId());
 		}
+		
 		return new Enrollment(student.get(), course.get(), dto.getEntryDate(), dto.getExitDate());
 	}
 }

@@ -18,6 +18,6 @@ public class StudentService {
 	}
 	
 	private Student convertToEntity(StudentDto s) {
-		return new Student(s.getDni(), s.getName(), s.getLast_name(), s.getAge(), s.getGender(), s.getCity(), s.getNotebook_number());
+		return new Student(s.getDni(), s.getName(), s.getLastName(), s.getAge(), s.getGender(), s.getCity(), s.getNotebookNumber());
 	}
 }

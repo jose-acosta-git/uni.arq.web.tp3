@@ -26,17 +26,17 @@ public class Enrollment {
 	private Course course;
 	
 	@Column
-	private LocalDate entry_date;
+	private LocalDate entryDate;
 	
 	@Column
-	private LocalDate exit_date;
+	private LocalDate exitDate;
 
-	public Enrollment(Student student, Course course, LocalDate entry_date, LocalDate exit_date) {
+	public Enrollment(Student student, Course course, LocalDate entryDate, LocalDate exitDate) {
 		super();
 		this.student = student;
 		this.course = course;
-		this.entry_date = entry_date;
-		this.exit_date = exit_date;
+		this.entryDate = entryDate;
+		this.exitDate = exitDate;
 	}
 	
 	// Default constructor, needed by Hibernate
@@ -45,6 +45,6 @@ public class Enrollment {
 	public int getId() { return id; }
 	public Student getStudent() { return student; }
 	public Course getCourse() { return course; }
-	public LocalDate getEntry_date() { return entry_date; }
-	public LocalDate getExit_date() { return exit_date; }
+	public LocalDate getEntryDate() { return entryDate; }
+	public LocalDate getExitDate() { return exitDate; }
 }

@@ -10,13 +10,13 @@ public class EnrollmentDto {
 	private LocalDate entryDate;
 	private LocalDate exitDate;
 	
-	public EnrollmentDto(Integer id, String student, String course, LocalDate entry_date, LocalDate exit_date) {
+	public EnrollmentDto(Integer id, String student, String course, LocalDate entryDate, LocalDate exitDate) {
 		super();
 		this.id = id;
 		this.student = student;
 		this.course = course;
-		this.entryDate = entry_date;
-		this.exitDate = exit_date;
+		this.entryDate = entryDate;
+		this.exitDate = exitDate;
 	}
 	
 	public EnrollmentDto() {}

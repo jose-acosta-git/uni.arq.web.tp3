@@ -25,7 +25,7 @@ public class Student {
 	private String name;
 	
 	@Column
-	private String last_name;
+	private String lastName;
 	
 	@Column
 	private int age;
@@ -37,21 +37,21 @@ public class Student {
 	private String city;
 	
 	@Column(unique = true)
-	private int notebook_number;
+	private int notebookNumber;
 	
 	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
 	private List<Enrollment> courses;
 
-	public Student(int dni, String name, String last_name, int age, String gender, String city,
-			int notebook_number) {
+	public Student(int dni, String name, String lastName, int age, String gender, String city,
+			int notebookNumber) {
 		super();
 		this.dni = dni;
 		this.name = name;
-		this.last_name = last_name;
+		this.lastName = lastName;
 		this.age = age;
 		this.gender = gender;
 		this.city = city;
-		this.notebook_number = notebook_number;
+		this.notebookNumber = notebookNumber;
 		this.courses = new ArrayList<>();
 	}
 	
@@ -62,56 +62,28 @@ public class Student {
 		return dni;
 	}
 
-	public void setDni(int dni) {
-		this.dni = dni;
-	}
-
 	public String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getLast_name() {
-		return last_name;
-	}
-
-	public void setLast_name(String last_name) {
-		this.last_name = last_name;
+	public String getLastName() {
+		return lastName;
 	}
 
 	public int getAge() {
 		return age;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public String getGender() {
 		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
 	}
 
 	public String getCity() {
 		return city;
 	}
 
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public int getNotebook_number() {
-		return notebook_number;
-	}
-
-	public void setNotebook_number(int notebook_number) {
-		this.notebook_number = notebook_number;
+	public int getNotebookNumber() {
+		return notebookNumber;
 	}
 
 	public int getId() {
