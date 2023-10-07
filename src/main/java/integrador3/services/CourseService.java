@@ -4,9 +4,11 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import integrador3.dtos.CourseDto;
+import integrador3.dtos.CourseWithStudentsCountDto;
 import integrador3.model.Course;
 import integrador3.repositories.CourseRepository;
 
@@ -32,5 +34,14 @@ public class CourseService {
 	}
 	private CourseDto convertToDto(Course course) {
 		return new CourseDto(course.getName());
+	}
+
+	public ResponseEntity<List<CourseWithStudentsCountDto>> findCoursesWithRegisteredStudentsOrderByStudentCount() {
+	    List<CourseWithStudentsCountDto> courses = courseRepository.findCoursesWithRegisteredStudentsOrderByStudentCount();
+	    if (!courses.isEmpty()) {
+	        return ResponseEntity.ok(courses);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 }
