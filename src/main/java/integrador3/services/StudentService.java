@@ -1,6 +1,7 @@
 package integrador3.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import integrador3.dtos.StudentDto;
@@ -15,6 +16,15 @@ public class StudentService {
 	
 	public Student save(StudentDto studentDto) {
 		return studentRepository.save(convertToEntity(studentDto));
+	}
+	
+	public ResponseEntity<Student> findByNotebookNumber (int notebookNumber) {
+        Student student = studentRepository.findByNotebookNumber(notebookNumber);
+        if (student != null) {
+            return ResponseEntity.ok(student);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
 	}
 	
 	private Student convertToEntity(StudentDto s) {

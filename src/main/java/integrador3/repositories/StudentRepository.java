@@ -9,4 +9,5 @@ import integrador3.model.Student;
 public interface StudentRepository extends JpaRepository<Student, Integer> {
 	
 	List<Student> findAllByOrderByLastNameAsc();
+	Student findByNotebookNumber(int notebookNumber);
 }
