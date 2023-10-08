@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import integrador3.dtos.CourseDto;
+import integrador3.dtos.CourseReportDto;
 import integrador3.dtos.CourseWithStudentsCountDto;
 import integrador3.model.Course;
 import integrador3.repositories.CourseRepository;
@@ -38,5 +39,10 @@ public class CoursesController {
 	@GetMapping("/coursesWithStudents")
 	public ResponseEntity<List<CourseWithStudentsCountDto>> getCoursesWithStudents() {
 		return courseService.findCoursesWithRegisteredStudentsOrderByStudentCount();
+	}
+	
+	@GetMapping("/generateReport")
+	public ResponseEntity<List<CourseReportDto>> generateReport() {
+		return courseService.generateCourseReport();
 	}
 }

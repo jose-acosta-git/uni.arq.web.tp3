@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import integrador3.dtos.CourseDto;
+import integrador3.dtos.CourseReportDto;
 import integrador3.dtos.CourseWithStudentsCountDto;
 import integrador3.model.Course;
 import integrador3.repositories.CourseRepository;
@@ -27,6 +28,15 @@ public class CourseService {
 		List<CourseDto> dtos = new LinkedList<>();
 		courses.forEach(c -> dtos.add(convertToDto(c)));
 		return dtos;
+	}
+	
+	public ResponseEntity<List<CourseReportDto>> generateCourseReport() {
+		List<CourseReportDto> courses = courseRepository.generateCourseReport();
+	    if (!courses.isEmpty()) {
+	        return ResponseEntity.ok(courses);
+	    } else {
+	        return ResponseEntity.notFound().build();
+	    }
 	}
 	
 	private Course convertToEntity(CourseDto dto) {
