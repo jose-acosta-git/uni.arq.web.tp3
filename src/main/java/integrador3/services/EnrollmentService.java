@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import integrador3.dtos.CreateEnrollmentDto;
@@ -38,6 +39,15 @@ public class EnrollmentService {
 		Enrollment enrollment = convertToEntity(dto);
 		return enrollmentRepository.save(enrollment);
 	}
+	
+    public ResponseEntity<List<Enrollment>> getStudentsByCourseAndCity(String courseName, String cityName) {
+    	List<Enrollment> enrollments = enrollmentRepository.findEnrollmentsByCourseNameAndCityName(courseName, cityName);
+        if (!enrollments.isEmpty()) {
+            return ResponseEntity.ok(enrollments);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 	
 	private EnrollmentDto convertToDto(Enrollment e) {
 		return new EnrollmentDto(e.getId(), e.getStudent().getName(), e.getCourse().getName(), e.getEntryDate(), e.getExitDate());
